@@ -1,11 +1,17 @@
 // ArrayDataHandling.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+#include "Data.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int* arr[Max_Arr_Length]{};
+	for (int i = 0; i < Max_Arr_Length; i++)
+	{
+		arr[i] = nullptr;
+	}
+	string filename;
+	int inputNum;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
