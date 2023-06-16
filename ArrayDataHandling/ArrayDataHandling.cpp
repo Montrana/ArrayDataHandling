@@ -17,7 +17,16 @@ int main()
 	}
 	string filename = "integers.txt";
 	string inputChoice;
-	inFile(arr, filename, count);
+	try
+	{
+		inFile(arr, filename, count);
+	}
+	catch (runtime_error err)
+	{
+		cout << "Error: " << err.what();
+		exit(1);
+	}
+	
 	print_array(arr);
 	do
 	{

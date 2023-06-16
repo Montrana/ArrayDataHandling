@@ -13,6 +13,7 @@ void inFile(int* arr[], string infile, int& count)
 	{
 		int i = 0;
 		int num;
+
 		while (fin >> num)
 		{
 			arr[i] = new int(num);
@@ -36,6 +37,7 @@ void inFile(int* arr[], string infile, int& count)
 /// <returns>if the number was found or not</returns>
 bool search(int* arr[], int num, int& index)
 {
+	// Searches through the values that are not null and attempts to find num.
 	for (int i = 0; arr[i] != nullptr; i++)
 	{
 		if (*arr[i] == num)
@@ -66,11 +68,12 @@ void replace(int* arr[], int num, int index)
 void append(int* arr[], int num)
 {
 	int i = 0;
+	// Loops through the array to find the value one past the last that is not null
 	while (arr[i] != nullptr)
 	{
 		i++;
 	}
-	arr[i] = new int(num);
+	arr[i] = new int(num); // creates a new integer for the index to point to.
 }
 
 /// <summary>
@@ -80,6 +83,8 @@ void append(int* arr[], int num)
 /// <param name="index">the index to delete</param>
 void del(int* arr[], int index)
 {
+	// This for loop starts at the index that the user wants to delete, and sets it to the next index, 
+	// and it does it for all indexes afterward, deleting the index and adjusting the array so that it is cleaner.
 	for (int i = index; arr[i] != nullptr; i++)
 	{
 		arr[i] = arr[i + 1];
@@ -119,7 +124,7 @@ int indexInput(string statement, int count)
 		cin >> index;
 		if (cin.fail())
 		{
-			throw runtime_error("INPUT WAS NOT A NUMBER");
+			throw runtime_error("INPUT WAS NOT A NUMBER"); //throws runtime error if the user doesn't input a number
 		}
 		else if (index < 0 || index > count - 1)
 		{
@@ -127,7 +132,7 @@ int indexInput(string statement, int count)
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
 		}
-	} while (index < 0 || index > count - 1);
+	} while (index < 0 || index > count - 1); // continues the loop if user entered a number, but not a valid index.
 	/// verifying user inputs instead of using a try block because according to this forum it wouldn't catch a Access Violation Exception
 	/// https://stackoverflow.com/questions/24739986/catching-c-access-violation-writing-exception
 	return index;
